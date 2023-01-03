@@ -1,16 +1,18 @@
 //
-//  ContentView.swift
+//  ChallengView.swift
 //  WeSplit
 //
-//  Created by koala panda on 2023/01/01.
+//  Created by koala panda on 2023/01/03.
 //
+
 
 import SwiftUI
 
-struct ContentView: View {
+struct ChallengView: View {
     @State private var checkAmount = 0.0
     @State private var numberOfPeople = 2
-    @State private var tipPercentage = 20
+    @State private var tipPercentage = 0
+//    @State private var tipPercentage = 20
     let tipPercentages = [10, 15, 20, 25, 0]
     var totalPerPerson: Double {
         let peopleCount = Double(numberOfPeople + 2)
@@ -38,11 +40,11 @@ struct ContentView: View {
                 
                 Section {
                     Picker("Tip percentage", selection: $tipPercentage) {
-                        ForEach(tipPercentages, id: \.self) {
+                        ForEach(0 ..< 101) {
                             Text($0, format: .percent)
                         }
                     }
-                    .pickerStyle(.segmented)
+//                    .pickerStyle(.segmented)
                 } header: {
                     Text("How much tip do you want to leave?")
                 }
@@ -73,8 +75,9 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct ChallengView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ChallengView()
     }
 }
+
